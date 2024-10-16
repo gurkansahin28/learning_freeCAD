@@ -9,3 +9,9 @@ import PartDesignGui
 #########################################
 Gui.activateWorkbench("OpenSCADWorkbench")
 ##########################################
+
+#------------------------------------
+# New (Ctrl + N)
+# Create a new empty document
+App.newDocument()
+#------------------------------------
