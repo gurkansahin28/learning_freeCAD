@@ -9,3 +9,4 @@ doc.recompute()
 
 Gui.SendMsgToActiveView("ViewFit")
 Gui.activeDocument().activeView().viewAxometric()
+# App.closeDocument(docName)
