@@ -15,3 +15,8 @@ Gui.activateWorkbench("OpenSCADWorkbench")
 # Create a new empty document
 App.newDocument()
 #------------------------------------
+from BOPTools import BOPFeatures
+bp = BOPFeatures.BOPFeatures(App.activeDocument())
+bp.make_cut(["MyBox", "Cylinder", ])
+App.ActiveDocument.recompute()
+#-----------------------------------------
