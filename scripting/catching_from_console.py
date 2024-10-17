@@ -26,3 +26,7 @@ bp = BOPFeatures.BOPFeatures(App.activeDocument())
 bp.make_cut(["MyBox", "Cylinder", ])
 App.ActiveDocument.recompute()
 #-----------------------------------------
+doc = App.getDocument("Unnamed")
+obj = doc.getObject("Cylinder001")
+shp = obj.Shape
+#------------------------------------------
