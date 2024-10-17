@@ -9,7 +9,9 @@ import PartDesignGui
 #########################################
 Gui.activateWorkbench("OpenSCADWorkbench")
 ##########################################
-
+Gui.Selection.clearSelection()
+Gui.Selection.addSelection('Unnamed','Cylinder001')
+##########################################
 #------------------------------------
 # New (Ctrl + N)
 # Create a new empty document
