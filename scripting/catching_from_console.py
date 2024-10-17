@@ -31,4 +31,5 @@ obj = doc.getObject("Cylinder001")
 shp = obj.Shape
 #------------------------------------------
 obj.Placement.Base = App.Vector(15,20,0)
+obj.Placement.Rotation = App.Rotation(App.Vector(15,20,0), 45)
 #-------------------------------------------
