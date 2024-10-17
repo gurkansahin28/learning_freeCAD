@@ -30,3 +30,5 @@ doc = App.getDocument("Unnamed")
 obj = doc.getObject("Cylinder001")
 shp = obj.Shape
 #------------------------------------------
+obj.Placement.Base = App.Vector(15,20,0)
+#-------------------------------------------
