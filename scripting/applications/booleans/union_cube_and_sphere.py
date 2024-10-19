@@ -27,6 +27,10 @@ fusion.Tool = sphere
 
 doc.recompute()
 
+fusion.Placement.Base = App.Vector(20, 10, 5)
+
+doc.recompute()
+
 ##################################################
 Gui.SendMsgToActiveView("ViewFit")
 Gui.activeDocument().activeView().viewAxometric()
