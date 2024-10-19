@@ -18,4 +18,5 @@ doc.recompute()
 
 Gui.activeDocument().activeView().viewAxometric()
 Gui.SendMsgToActiveView("ViewFit")
+Gui.ActiveDocument.ActiveView.setAxisCross(True)
 #App.closeDocument(docName)
