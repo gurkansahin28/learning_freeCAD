@@ -13,3 +13,5 @@ Gui.SendMsgToActiveView("ViewFit")
 Gui.activeDocument().activeView().viewAxometric()
 Gui.ActiveDocument.ActiveView.setAxisCross(True)
 ###################################################
+#doc.saveAs("/absolute/path/to/your/file.FCStd")
+# App.closeDocument(docName)
