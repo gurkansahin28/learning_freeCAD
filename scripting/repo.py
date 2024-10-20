@@ -1,4 +1,18 @@
-# https://wiki.freecad.org/Draft_Line
+
+"""
+https://wiki.freecad.org/Manual:Introduction
+
+https://wiki.freecad.org/Online_Help_Toc
+
+https://wiki.freecad.org/Scripts
+ https://wiki.freecad.org/Introduction_to_Python
+
+https://wiki.freecad.org/Python_scripting_tutorial
+
+https://wiki.freecad.org/Tutorials
+
+https://wiki.freecad.org/Draft_Line
+"""
 ####################################
 
 
