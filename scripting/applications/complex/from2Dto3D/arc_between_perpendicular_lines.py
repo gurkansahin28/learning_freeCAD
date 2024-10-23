@@ -28,7 +28,7 @@ line2 = sketch.addGeometry(lineSegment2, False)
 # Define the arc
 center = App.Vector(2, 8, 0)  # Center of the arc between the lines
 radius = 2 # Radius of the arc
-start_angle = 0  # Starting from the right side (0 degrees)
+start_angle = 0  # Starting from the left side (0 degrees)
 end_angle = 90  # Ending at the top (90 degrees)
 
 # Add the arc to the sketch (center, start, end)
