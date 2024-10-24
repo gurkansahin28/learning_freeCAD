@@ -12,7 +12,7 @@ import FreeCADGui as Gui
 import Draft
 #import math
 ####################################################
-docName = 'Roteted'
+docName = 'Rectangle'
 
 doc = App.newDocument(docName)
 
