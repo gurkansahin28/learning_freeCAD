@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Oct 24 14:30:45 2024
+Created on Thu Oct 24 16:21:46 2024
 
 @author: gurkan
 """
@@ -18,15 +18,19 @@ units = 10
 ###
 wire1V1 = App.Vector(0, 0, z)
 wire1V2 = App.Vector(0, units, z)
-wire1 = Draft.makeWire([wire1V1, wire1V2])
+wire1Vectors = [wire1V1, wire1V2]
+wire1 = Draft.makeWire(wire1Vectors)
 
 wire2V2 = App.Vector(units, units, z)
-wire2 = Draft.makeWire([wire1V2, wire2V2])
+wire2Vectors = [wire1V2, wire2V2]
+wire2 = Draft.makeWire(wire2Vectors)
 
 wire3V2 = App.Vector(units, 0, z)
-wire3 = Draft.makeWire([wire2V2, wire3V2])
+wire3Vectors = [wire2V2, wire3V2]
+wire3 = Draft.makeWire(wire3Vectors)
 
-wire4 = Draft.makeWire([wire3V2, wire1V1])
+wire4Vectors = [wire3V2, wire1V1]
+wire4 = Draft.makeWire(wire4Vectors)
 ###
 doc.recompute()
 ###
@@ -37,3 +41,6 @@ doc.recompute()
 Gui.activeDocument().activeView().viewAxometric()
 Gui.SendMsgToActiveView("ViewFit")
 ##########################################
+
+
+
