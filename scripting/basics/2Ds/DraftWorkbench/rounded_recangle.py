@@ -1,86 +1,124 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Oct 24 19:51:43 2024
+Created on Fri Oct 25 12:07:42 2024
 
 @author: gurkan
 """
-
-# 260 mm 355 mm 50 mm
 
 import FreeCAD as App
 import FreeCADGui as Gui
 import Draft
 
-docName = 'RoundedRect'
-
+docName = 'RoundedBoxXY'
 doc = App.newDocument(docName)
 
+### SETTING XY ###
 z = 0.0
-r = 5.0
 pl = App.Placement()
 pl.Rotation.Q = (0.0, -0.0, -0.0, 1.0)
-pl.Base = App.Vector(r, r, z)
+
+### SPECIFIC DIMENTIONS OF THE RECT ###
+# width and height
+sx = 260.0 # width
+sy = 355.0 # height
+
+# r for radius to round the rectangle
+r = 5.0
+
+# the difference along X axis
+dx = sx - r
+
+# the difference along Y axis
+dy = sy - r
+
+
+### CENTER VECTORS FOR ROUNDING ######
+# the center of the left bottom arc
+clba = App.Vector(r, r, z)
+
+# the center of the left top arc
+clta = App.Vector(r, dy, z)
+
+# the center of the right top arc
+crta = App.Vector(dx, dy, z)
+
+# the center of the rigth bottom arc
+crba = App.Vector(dx, r, z)
+
+
+### WIRE VECTORS FOR THE EDGES #########
+# the left wire vectors of the left edge
+lwV1 = App.Vector(0, r, z) # Vector 1
+lwV2 = App.Vector(0, dy, z) # Vector 2
+lwVectors = [lwV1, lwV2]
+
+# the top wire vectors of the top edge
+twV1 = App.Vector(r, sy, z)
+twV2 = App.Vector(dx, sy, z)
+twVectors = [twV1, twV2]
+
+# the right wire vectors of the right edge
+rwV1 = App.Vector(sx, dy, z)
+rwV2 = App.Vector(sx, r, z)
+rwVectors = [rwV1, rwV2]
+
+# the bottom wire vectors of the bottom edge
+bwV1 = App.Vector(dx, 0, z)
+bwV2 = App.Vector(r, 0, 0)
+bwVectors = [bwV1, bwV2]
+
+
+### DRAWING OF THE ARCS AND WIRES ###
+# the left bottom arc
+pl.Base = clba
 start = 180.0
 end = 270.0
-
-units_h = 345.0
-units_w = 250.0
-
-# LEFT BOTTOM ARC -----------------------------------
-arcLeftBottom = Draft.make_circle(radius = r, placement=pl, face=False, startangle=start, endangle=end, support=None)
+lba = Draft.make_circle(radius = r, placement = pl, face = False, 
+                        startangle = start, endangle = end, support = None)
+doc.recompute()
+# the left wire
+lw = Draft.makeWire(lwVectors)
 doc.recompute()
 
-wire1V1 = App.Vector(0.0, r, z)
-wire1V2 = App.Vector(0.0, units_h, z)
-wire1Vectors = [wire1V1, wire1V2]
-wire1 = Draft.makeWire(wire1Vectors)
+# the left top arc
+pl.Base = clta
+start = 90.0
+end = 180.0
+lta = Draft.make_circle(radius = r, placement = pl, face = False, 
+                        startangle = start, endangle = end, support = None)
+doc.recompute()
+# the top wire
+tw = Draft.makeWire(twVectors)
 doc.recompute()
 
-# LEFT TOP ARC --------------------------------------
-pl.Base = App.Vector(r, units_h, z)
-start = 90
-end = 180
-arcLeftTop = Draft.make_circle(radius = r, placement=pl, face=False, startangle=start, endangle=end, support=None)
+# the right top arc
+pl.Base = crta
+start = 0.0
+end = 90.0
+rta = Draft.make_circle(radius = r, placement = pl, face = False, 
+                        startangle = start, endangle = end, support = None)
+doc.recompute()
+# the right wire
+rw = Draft.makeWire(rwVectors)
 doc.recompute()
 
-wire2V1 = App.Vector(r, (units_h + r), z)
-wire2V2 = App.Vector((units_w + r), (units_h + r), z)
-wire2Vectors = [wire2V1, wire2V2]
-wire2 = Draft.makeWire(wire2Vectors)
+# the right bottom arc
+pl.Base = crba
+start = 270.0
+end = 360.0
+rba = Draft.make_circle(radius = r, placement = pl, face = False, 
+                        startangle = start, endangle = end, support = None)
+doc.recompute()
+# the bottom wire
+bw = Draft.makeWire(bwVectors)
 doc.recompute()
 
-# RIGHT TOP ARC -------------------------------------
-pl.Base = App.Vector((units_w + r), units_h, z)
-start = 0
-end = 90
-arcRightTop = Draft.make_circle(radius = r, placement=pl, face=False, startangle=start, endangle=end, support=None)
-doc.recompute()
 
-wire3V1 = App.Vector((units_w + 2*r), units_h, z)
-wire3V2 = App.Vector((units_w + 2*r), r, z)
-wire3Vectors = [wire3V1, wire3V2]
-wire3 = Draft.makeWire(wire3Vectors)
+### JOINING THE WHOLE DRAWING ###
+wireList = [lba, lw, lta, tw, rta, rw, rba, bw]
+j = Draft.upgrade(wireList, delete = True)[0]
 doc.recompute()
-
-# RIGHT BOTTOM ARC ----------------------------------
-pl.Base = App.Vector((units_w + r), r, z)
-start = 270
-end = 360
-arcRightBottom = Draft.make_circle(radius = r, placement=pl, face=False, startangle=start, endangle=end, support=None)
-doc.recompute()
-
-wire4V1 = App.Vector((units_w + r), 0, z)
-wire4V2 = App.Vector(r, 0, z)
-wire4Vectors = [wire4V1, wire4V2]
-wire4 = Draft.makeWire(wire4Vectors)
-doc.recompute()
-
-# UNIFYING THE WHOLE DRAWING ------------------------
-wireList = [arcLeftBottom, wire1, arcLeftTop, wire2, arcRightTop, wire3, arcRightBottom, wire4]
-joinedWires = Draft.upgrade(wireList, delete = True)[0]
-doc.recompute()
-
 ##################################################
 Gui.activeDocument().activeView().viewTop()
 Gui.SendMsgToActiveView('ViewFit')
