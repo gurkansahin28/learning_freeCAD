@@ -10,6 +10,7 @@ from PySide import QtGui
 import FreeCAD as App
 import FreeCADGui as Gui
 import Draft
+import Part
 
 # Define the main window
 class DataEntryWindow(QtGui.QWidget):
@@ -196,13 +197,22 @@ def roundedRectXY(x, y, r):
     j = Draft.upgrade(wireList, delete = True)[0]
     doc.recompute()
     
-    #App.ActiveDocument.ActiveObject.Label = f'RoundedDraft{lw}x{tw}_{lba}'
-    App.ActiveDocument.ActiveObject.Label = f'Rounded_{int(sx)}x{int(sy)}-{int(sr)}'
+    ### GIVING A LABEL TO THE OBJECT ###
+    label = f'Rounded_{int(sx)}x{int(sy)}-{int(sr)}'
+    activeObject = App.ActiveDocument.ActiveObject
+    activeObject.Label = label
+    
+    ### SETTING A FACE FOR THE OBJECT ###
+    face = doc.addObject('Part::Face', 'Face')
+    face.Sources = activeObject
+    doc.recompute()
+    
     # Gui.Selection.clearSelection()
 
     ##################################################
     Gui.activeDocument().activeView().viewTop()
     Gui.SendMsgToActiveView('ViewFit')
     Gui.ActiveDocument.ActiveView.setAxisCross(True)
+    doc.recompute()
     pass
 
