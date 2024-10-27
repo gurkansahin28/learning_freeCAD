@@ -90,7 +90,15 @@ class DataEntryWindow(QtGui.QWidget):
 
 # Create and show the widget
 window = DataEntryWindow()
+####
+parent = QtGui.QApplication.activeWindow()
+pGeometry = parent.geometry()
+pGeoX = pGeometry.x()
+pGeoY = pGeometry.y()
+factor = 50
+window.move(pGeoX + 3*factor, pGeoY + factor)
 window.show()
+####
 
 #############################################################################
 #############################################################################
