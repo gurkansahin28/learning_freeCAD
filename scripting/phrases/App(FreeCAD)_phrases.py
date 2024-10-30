@@ -29,5 +29,9 @@ myVector = App.Vector(x, y, z)
 
 App.closeDocument(docName)
 
+#------------------------------------------
+obj.Placement.Base = App.Vector(15,20,0)
+obj.Placement.Rotation = App.Rotation(App.Vector(15,20,0), 45)
+#-------------------------------------------
 
 
