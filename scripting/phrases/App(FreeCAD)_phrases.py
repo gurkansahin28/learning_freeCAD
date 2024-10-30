@@ -4,7 +4,7 @@ docName = 'DummyDoc'
 doc = App.newDocument(docName)
 doc.addObject('Part::Box', 'MyBox')
 
-App.newDocument([String], [hidden = False])
+App.newDocument(docName, hidden = False)
 
 sectionObject = doc.addObject('Part::Feature', 'Section')
 
@@ -18,7 +18,7 @@ App.getDocument(docName)
 App.listDocuments()
 App.setActiveDocument(docName)
 App.ActiveDocument = App.getDocument(docName)
-App.openDocument(filepath, [hidden = False])
+App.openDocument(filepath, hidden = False)
 
 App.ActiveDocument.Name
 App.ActiveDocument.recompute()
