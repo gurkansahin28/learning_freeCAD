@@ -17,7 +17,7 @@ App.activeDocument()
 App.getDocument(docName)
 App.listDocuments()
 App.setActiveDocument(docName)
-App.ActiveDocument = App.getDocument("BooleanOperationToolsDoc")
+App.ActiveDocument = App.getDocument(docName)
 App.openDocument(filepath, [hidden = False])
 
 App.ActiveDocument.Name
