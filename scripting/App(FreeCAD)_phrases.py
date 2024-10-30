@@ -2,6 +2,9 @@ import FreeCAD as App
 
 docName = 'DummyDoc'
 doc = App.newDocument(docName)
+doc.addObject('Part::Box', 'MyBox')
+doc.getObject('MyBox')
+doc.getObjectsByLabel('MyBox')
 doc.recompute()
 
 App.ActiveDocument
