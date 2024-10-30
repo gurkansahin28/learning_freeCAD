@@ -5,7 +5,8 @@ import PartDesignGui
 #------------------------------------
 # New (Ctrl + N)
 # Create a new empty document
-App.newDocument()
+docName = 'BooleanOperationToolsDoc'
+App.newDocument(docName)
 #------------------------------------
 #bp.make_cut()
 #bp.make_common()
