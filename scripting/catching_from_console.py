@@ -1,20 +1,20 @@
 
+import FreeCAD as App
+import FreeCADGui as Gui
 import PartDesignGui
-
+from BOPTools import BOPFeatures
 
 #------------------------------------
-# New (Ctrl + N)
-# Create a new empty document
 docName = 'BooleanOperationToolsDoc'
-App.newDocument(docName)
+doc = App.newDocument(docName)
 #------------------------------------
 #bp.make_cut()
 #bp.make_common()
 #bp.make_fuse()
 #bp.make_section()
-from BOPTools import BOPFeatures
+
 bp = BOPFeatures.BOPFeatures(App.activeDocument())
-bp.make_cut(["MyBox", "Cylinder", ])
+bp.make_cut(["MyBox", "MyCylinder", ])
 App.ActiveDocument.recompute()
 #-----------------------------------------
 doc = App.getDocument("Unnamed")
