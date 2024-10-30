@@ -3,6 +3,9 @@ import FreeCAD as App
 docName = 'DummyDoc'
 doc = App.newDocument(docName)
 doc.addObject('Part::Box', 'MyBox')
+
+sectionObject = doc.addObject('Part::Feature', 'Section')
+
 doc.getObject('MyBox')
 doc.getObjectsByLabel('MyBox')
 doc.recompute()
