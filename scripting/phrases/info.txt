@@ -1,0 +1,1 @@
+During the learning FreeCAD scripting in Python, I saw some typical phrases appeared repeatedly. Here are their notation for getting better understanding.
