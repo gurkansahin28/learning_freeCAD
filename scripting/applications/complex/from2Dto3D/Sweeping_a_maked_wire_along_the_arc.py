@@ -38,7 +38,8 @@ doc.recompute()
 # sweeping sectionWire along the spineWire
 sweep = doc.addObject('Part::Sweep', 'Sweeping')
 sweep.Sections = doc.getObjectsByLabel('Section')
-sweep.Spine = doc.getObject('Arc')
+#sweep.Spine = doc.getObject('Arc')
+sweep.Spine = doc.getObjectsByLabel('SpineArc')[0]
 sweep.Solid = True
 sweep.Frenet = False
 doc.recompute()
