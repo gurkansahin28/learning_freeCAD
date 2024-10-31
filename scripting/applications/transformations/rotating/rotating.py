@@ -26,10 +26,17 @@ cube.Height = height
 # setting up the placement of the cube
 cube.Placement.Base = App.Vector(5, 5, 0)
 
+# defining the vector for Z axis
+aroundZ = App.Vector(0, 0, 1)
+
+# defining degrees of rotating
+degrees = 20
+
 # rotating the cube 20 degree around the Z axis
-cube.Placement.Rotation = App.Rotation(App.Vector(0, 0, 1), 20)
+cube.Placement.Rotation = App.Rotation(aroundZ, degrees)
 doc.recompute()
 
+# setting Gui for visualization
 ##################################################
 Gui.activeDocument().activeView().viewAxometric()
 Gui.ActiveDocument.ActiveView.setAxisCross(True)
