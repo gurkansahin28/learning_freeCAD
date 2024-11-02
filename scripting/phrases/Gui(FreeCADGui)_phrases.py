@@ -14,6 +14,7 @@ Gui.ActiveDocument = Gui.getDocument(docName)
 Gui.runCommand('Std_OrthographicCamera',0)
 Gui.runCommand('Std_PerspectiveCamera',1)
 Gui.runCommand('Draft_ToggleGrid',0)
+Gui.runCommand('Draft_ToggleGrid',1)
 Gui.activeDocument().activeView().setCameraType("Perspective")
 
 myViewObject = Gui.ActiveDocument.getObject("ObjectName")
