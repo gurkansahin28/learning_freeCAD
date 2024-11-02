@@ -18,6 +18,7 @@ doc = App.newDocument(docName)
 doc.recompute()
 
 # 3. making a box for the vector arithmetic attempts
+print('adding a box to the document...')
 width = 7
 length = 5
 height = 3
