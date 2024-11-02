@@ -86,4 +86,4 @@ myBox.Placement.Base = scalerVector
 doc.recompute()
 input('Press enter to continue!')
 
-# note: there are advanced topics like dot and cross products
+# note: there are advanced topics like DOT and CROSS products
