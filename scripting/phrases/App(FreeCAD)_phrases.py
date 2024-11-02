@@ -1,5 +1,8 @@
 import FreeCAD as App
 
+myDocument = App.newDocument("Document Name")
+myDocument = App.ActiveDocument
+
 docName = 'DummyDoc'
 doc = App.newDocument(docName)
 doc.addObject('Part::Box', 'MyBox')
@@ -7,6 +10,10 @@ doc.addObject('Part::Box', 'MyBox')
 App.newDocument(docName, hidden = False)
 
 sectionObject = doc.addObject('Part::Feature', 'Section')
+
+myObject = App.ActiveDocument.getObject("ObjectName")
+myObject = App.ActiveDocument.ObjectName
+myViewObject = App.ActiveDocument.ObjectName.ViewObject
 
 doc.getObject('MyBox')
 doc.getObjectsByLabel('MyBox')
