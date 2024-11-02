@@ -15,6 +15,9 @@ Gui.runCommand('Std_OrthographicCamera',0)
 Gui.runCommand('Std_PerspectiveCamera',1)
 Gui.activeDocument().activeView().setCameraType("Perspective")
 
+myViewObject = Gui.ActiveDocument.getObject("ObjectName")
+myGuiDocument = Gui.ActiveDocument
+myView = Gui.ActiveDocument.ActiveView
 
 # WORKBENCHES
 ########################################
