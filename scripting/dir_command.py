@@ -1,4 +1,4 @@
->>> dir()
+dir()
 ['App', 'Crt', 'Err', 'FCADLogger', 'FreeCAD', 'FreeCADGui', 'GeneratePackageIcon', 'Gui', 
  'IntEnum', 'Log', 'Msg', 'Ntf', 'NumberFormat', 'PathCommandGroup', 'PropertyType', 
  'ResolveMode', 'ReturnType', 'ScaleType', 'Scheme', 'Start', 'StartPage', 'Tnf', 
@@ -7,9 +7,9 @@
  '__doc__', '__loader__', '__name__', '__package__', '__spec__', 
  'cmake', 'coin', 'datetime', 'inspect', 'os', 'removeFromPath', 
  'setupSearchPaths', 'sys', 'traceback', 'webView']
->>> 
+ 
 
->>> dir(Part)
+dir(Part)
 ['Arc', 'ArcOfCircle', 'ArcOfConic', 'ArcOfEllipse', 'ArcOfHyperbola', 'ArcOfParabola', 'AttachEngine',
  'BRepFeat', 'BRepOffsetAPI', 'BSplineCurve', 'BSplineSurface', 'BezierCurve', 'BezierSurface', 'BodyBase',
  'ChFi2d', 'Circle', 'CompSolid', 'Compound', 'Cone', 'Conic', 'Cylinder',
@@ -38,9 +38,9 @@
  'makeSolid', 'makeSphere', 'makeSplitShape', 'makeSweepSurface',
  'makeThread', 'makeTorus', 'makeTube', 'makeWedge', 'makeWireString',
  'open', 'read', 'setStaticValue', 'show', 'sortEdges', 'splitSubname']
->>> 
+ 
 #################################################################################
->>> dir('Draft')
+dir('Draft')
 ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__',
  '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__',
  '__getnewargs__', '__getstate__', '__gt__', '__hash__', '__init__',
@@ -56,9 +56,9 @@
  'removesuffix', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition',
  'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase',
  'title', 'translate', 'upper', 'zfill']
->>> 
+ 
 #################################################################################
->>> dir(FreeCAD.ActiveDocument)
+dir(FreeCAD.ActiveDocument)
 ['ActiveObject', 'Comment', 'Company', 'Content', 'CreatedBy', 'CreationDate',
  'DependencyGraph', 'FileName', 'HasPendingTransaction', 'Id', 'Importing',
  'InList', 'Label', 'LastModifiedBy', 'LastModifiedDate', 'License', 'LicenseURL',
@@ -86,7 +86,7 @@
  'restorePropertyContent', 'save', 'saveAs', 'saveCopy', 'setClosable',
  'setDocumentationOfProperty', 'setEditorMode', 'setGroupOfProperty',
  'setPropertyStatus', 'supportedTypes', 'undo']
->>> 
+ 
 #################################################################################
 
 #################################################################################
