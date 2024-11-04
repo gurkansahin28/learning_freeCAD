@@ -4,12 +4,12 @@ import FreeCADGui as Gui
 import Part
 import Draft
 
-docName = 'CreationBoxes'
+docName = 'CreationCones'
 doc = App.newDocument(docName)
 
-App.setActiveDocument("CreationBoxes")
-App.ActiveDocument=App.getDocument("CreationBoxes")
-Gui.ActiveDocument=Gui.getDocument("CreationBoxes")
+App.setActiveDocument("CreationCones")
+App.ActiveDocument=App.getDocument("CreationCones")
+Gui.ActiveDocument=Gui.getDocument("CreationConees")
 
 r_bottom = 0
 r_top = 5
