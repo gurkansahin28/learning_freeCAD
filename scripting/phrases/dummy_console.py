@@ -25,3 +25,7 @@ coneOther.Radius2 = r_top
 coneOther.Height = height
 coneOther.Placement.Base = App.Vector(3, 3, 0)
 doc.recompute()
+
+# App.setActiveDocument("")
+# App.ActiveDocument=None
+# Gui.ActiveDocument=None
