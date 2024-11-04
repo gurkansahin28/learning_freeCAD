@@ -29,10 +29,36 @@ doc.recompute()
 Gui.activeDocument().activeView().viewTrimetric()
 Gui.SendMsgToActiveView("ViewFit")
 
+# intersection: common
 from BOPTools import BOPFeatures
 bp = BOPFeatures.BOPFeatures(App.activeDocument())
 bp.make_common(["MyCone", "MyOtherCone", ])
 
+# undo
+Gui.runCommand('Std_Undo',0)
+
+# union
+from BOPTools import BOPFeatures
+bp = BOPFeatures.BOPFeatures(App.activeDocument())
+bp.make_fuse(["MyCone", "MyOtherCone", ])
+
+# undo
+Gui.runCommand('Std_Undo',0)
+
+# difference
+from BOPTools import BOPFeatures
+bp = BOPFeatures.BOPFeatures(App.activeDocument())
+bp.make_cut(["MyCone", "MyOtherCone", ])
+
+# undo
+Gui.runCommand('Std_Undo',0)
+
+from BOPTools import BOPFeatures
+bp = BOPFeatures.BOPFeatures(App.activeDocument())
+bp.make_section(["MyCone", "MyOtherCone", ])
+
+# undo
+Gui.runCommand('Std_Undo',0)
 
 # App.setActiveDocument("")
 # App.ActiveDocument=None
