@@ -8,6 +8,37 @@
  'cmake', 'coin', 'datetime', 'inspect', 'os', 'removeFromPath', 
  'setupSearchPaths', 'sys', 'traceback', 'webView']
 >>> 
+
+>>> dir(Part)
+['Arc', 'ArcOfCircle', 'ArcOfConic', 'ArcOfEllipse', 'ArcOfHyperbola', 'ArcOfParabola', 'AttachEngine',
+ 'BRepFeat', 'BRepOffsetAPI', 'BSplineCurve', 'BSplineSurface', 'BezierCurve', 'BezierSurface', 'BodyBase',
+ 'ChFi2d', 'Circle', 'CompSolid', 'Compound', 'Cone', 'Conic', 'Cylinder',
+ 'Edge', 'Ellipse', 'Face',
+ 'Feature',
+ 'Geom2d', 'GeomPlate', 'GeometryBoolExtension', 'GeometryDoubleExtension', 'GeometryIntExtension', 'GeometryStringExtension',
+ 'HLRBRep', 'Hyperbola',
+ 'Line', 'LineSegment',
+ 'OCCConstructionError', 'OCCDimensionError', 'OCCDomainError', 'OCCError', 'OCCRangeError', 'OCC_VERSION', 'OffsetCurve', 'OffsetSurface',
+ 'Parabola', 'Part2DObject', 'Plane', 'PlateSurface', 'Point', 'Precision', 'RectangularTrimmedSurface',
+ 'Shape', 'ShapeFix', 'ShapeUpgrade', 'Shell', 'Solid', 'Sphere', 'SurfaceOfExtrusion', 'SurfaceOfRevolution',
+ 'Toroid',
+ 'Vertex',
+ 'Wire',
+ '__doc__', '__file__', '__fromPythonOCC__', '__loader__',
+ '__name__', '__package__', '__sortEdges__',
+ '__spec__', '__toPythonOCC__',
+ 'cast_to_shape', 'clearShapeCache',
+ 'export', 'exportUnits',
+ 'getFacets', 'getShape', 'getSortedClusters',
+ 'insert', 'joinSubname',
+ 'makeBox', 'makeCircle', 'makeCompound', 'makeCone', 'makeCylinder',
+ 'makeFace', 'makeFilledFace', 'makeFilledSurface', 'makeHelix',
+ 'makeLine', 'makeLoft', 'makeLongHelix', 'makePlane', 'makePolygon',
+ 'makeRevolution', 'makeRuledSurface', 'makeShell', 'makeShellFromWires',
+ 'makeSolid', 'makeSphere', 'makeSplitShape', 'makeSweepSurface',
+ 'makeThread', 'makeTorus', 'makeTube', 'makeWedge', 'makeWireString',
+ 'open', 'read', 'setStaticValue', 'show', 'sortEdges', 'splitSubname']
+>>> 
 #################################################################################
 
 myvec = FreeCAD.Vector(2, 0, 0)
