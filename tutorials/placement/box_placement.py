@@ -21,10 +21,14 @@ box.Height = 10
 box.Width = 30
 doc.recompute()
 
+input("Please, press Enter... ")
+
 # setting up Gui before replacement works
 Gui.ActiveDocument.ActiveView.setAxisCross(True)
 Gui.activeDocument().activeView().viewAxometric()
 Gui.SendMsgToActiveView('ViewFit')
+
+input("Please, press Enter... ")
 
 #--- ROTATION --------------------------------
 # setting the rotation parameters
@@ -37,11 +41,18 @@ degrees = 30
 box.Placement.Rotation = App.Rotation(aroundX, degrees)
 doc.recompute()
 
+input("Please, press Enter... ")
+
 #--- TRANSLATION ------------------------------
 # setting the all translation parameters
 box.Placement.Base = App.Vector(10, 0, 0)
+
+input("Please, press Enter... ")
+
 box.Placement.Base = App.Vector(5, 10, 0)
 doc.recompute()
+
+input("Please, press Enter... ")
 
 # setting axis per axis
 box.Placement.Base.z = 10
@@ -51,6 +62,8 @@ box.Placement.Base.z = 0
 box.Placement.Base.y = 0
 doc.recompute()
 
+input("Please, press Enter... ")
+
 #--- ADDING INCREMENTAL CHANGES -----------------
 # obtaining existing position
 placement = box.Placement
@@ -59,6 +72,8 @@ placement.Base += incrementalFactor
 box.Placement = placement
 doc.recompute()
 
+input("Please, press Enter... ")
+
 #--- SETTING THE WHOLE PLACEMENT PARAMETERS -----
 base = App.Vector(-3, -1, -5)
 aroundY = App.Vector(0, 1, 0)
@@ -66,5 +81,3 @@ degrees = 60
 rotation = App.Rotation(aroundY, degrees)
 box.Placement = App.Placement(base, rotation)
 doc.recompute()
-
-
