@@ -6,7 +6,7 @@ Created on Sun Nov  3 15:19:30 2024
 @author: gurkan
 """
 ##############################################
-### TRANSPARENCY IN FREECAD SCRIPTING ########
+### COLORIZING IN FREECAD SCRIPTING ##########
 ##############################################
 
 # importing freecad and the gui as aliases
