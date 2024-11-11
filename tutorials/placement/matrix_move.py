@@ -12,10 +12,6 @@ import FreeCADGui as Gui
 ### Creating a document with given name
 docName = 'MatricesDoc'
 doc = App.newDocument(docName)
-# App.setActiveDocument("MatricesDoc")
-# App.ActiveDocument=App.getDocument("MatricesDoc")
-# Gui.ActiveDocument=Gui.getDocument("MatricesDoc")
-
 
 ### Creating a box object
 box = doc.addObject('Part::Box', 'MyBox')
