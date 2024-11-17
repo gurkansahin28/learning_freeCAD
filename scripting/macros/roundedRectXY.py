@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Oct 25 23:37:05 2024
+This macro creates rounded rectangle with given parameters on the XY plane.
+It uses a Qt interface.
+
+Created on Sun Oct 27 14:33:37 2024
 
 @author: gurkan
 """
@@ -12,79 +15,96 @@ import FreeCADGui as Gui
 import Draft
 import Part
 
-# Define the main window
 class DataEntryWindow(QtGui.QWidget):
     def __init__(self):
         super(DataEntryWindow, self).__init__()
-        
+
         # Set window properties
         self.setWindowTitle("Rounded Rect XY Entries")
-        self.setGeometry(100, 100, 300, 300)
+        self.setGeometry(100, 100, 100, 100)
 
-        # Create layout
+        # Create the main layout
         layout = QtGui.QVBoxLayout()
 
-        # Create input fields with labels
-        self.sxLabel = QtGui.QLabel("Enter Width:")
+        # Create a grid layout for the table
+        grid = QtGui.QGridLayout()
+
+#########################################################################
+        ### Creating UI
+        # labels
+        labelsRow = 0
+        sxLabel = QtGui.QLabel('Width:')
+        syLabel = QtGui.QLabel('Height:')
+        srLabel = QtGui.QLabel('Radius:')
+        #grid.addWidget(Widget, Row, Column)
+        grid.addWidget(sxLabel, labelsRow, 0)
+        grid.addWidget(syLabel, labelsRow, 1)
+        grid.addWidget(srLabel, labelsRow, 2)
+        
+        # line edits
+        linesRow = 1
         self.sxInput = QtGui.QLineEdit()
-        
-        self.syLabel = QtGui.QLabel("Enter Height:")
         self.syInput = QtGui.QLineEdit()
-        
-        self.srLabel = QtGui.QLabel("Enter Radius:")
         self.srInput = QtGui.QLineEdit()
+        #grid.addWidget(Widget, Row, Column)
+        grid.addWidget(self.sxInput, linesRow, 0)
+        grid.addWidget(self.syInput, linesRow, 1)
+        grid.addWidget(self.srInput, linesRow, 2)
         
-        # Create buttons
-        self.submit_button = QtGui.QPushButton("Submit")
-        self.submit_button.clicked.connect(self.process_data)
-
-        self.clear_button = QtGui.QPushButton("Clear")
-        self.clear_button.clicked.connect(self.clear_data)
-        
-        self.close_button = QtGui.QPushButton("Cancel")
-        self.close_button.clicked.connect(self.close)
-
-        # Add widgets to layout
-        layout.addWidget(self.sxLabel)
-        layout.addWidget(self.sxInput)
-        layout.addWidget(self.syLabel)
-        layout.addWidget(self.syInput)
-        layout.addWidget(self.srLabel)
-        layout.addWidget(self.srInput)
-        layout.addWidget(self.submit_button)
-        layout.addWidget(self.clear_button)
-        layout.addWidget(self.close_button)
-        
+        # buttons
+        buttonsRow = 2
+        closeButton = QtGui.QPushButton('Close') 
+        clearButton = QtGui.QPushButton('Clear') 
+        submitButton = QtGui.QPushButton('OK')
+        #grid.addWidget(Widget, Row, Column)
+        grid.addWidget(closeButton, buttonsRow, 0)
+        grid.addWidget(clearButton, buttonsRow, 1)
+        grid.addWidget(submitButton, buttonsRow, 2)
+        # QPushButton.clicked.connect(function)
+        closeButton.clicked.connect(self.close)
+        clearButton.clicked.connect(self.clear_data)
+        submitButton.clicked.connect(self.process_data)
+###########################################################################
+        # Add the grid layout to the main layout
+        layout.addLayout(grid)
         self.setLayout(layout)
-
+    
     def process_data(self):
-        # Get data from inputs
+        # getting data from inputs
         sxi = self.sxInput.text()
         syi = self.syInput.text()
         sri = self.srInput.text()
         
-        # Evaluate and display a message based on data
         try:
             sxf = float(sxi)
             syf = float(syi)
             srf = float(sri)
             message = f"Width: {sxf}, Heigth: {syf} and Radius: {srf}."
             roundedRectXY(sxf, syf, srf)
+            
         except ValueError:
-            message = "Please, enter integers or floats."
+            message = "Please, check the entries for integers or floats."
             print(message)
-        #QtGui.QMessageBox.information(self, "Data Output", message)
-
+            
     def clear_data(self):
-        # Clear the input fields
         self.sxInput.clear()
         self.syInput.clear()
         self.srInput.clear()
 
-# Show the data entry window
+# Create and show the widget
 window = DataEntryWindow()
+####
+parent = QtGui.QApplication.activeWindow()
+pGeometry = parent.geometry()
+pGeoX = pGeometry.x()
+pGeoY = pGeometry.y()
+factor = 50
+window.move(pGeoX + 3*factor, pGeoY + factor)
 window.show()
+####
 
+#############################################################################
+#############################################################################
 
 def roundedRectXY(x, y, r):
 
@@ -215,4 +235,5 @@ def roundedRectXY(x, y, r):
     Gui.ActiveDocument.ActiveView.setAxisCross(True)
     doc.recompute()
     pass
+
 
