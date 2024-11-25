@@ -23,7 +23,9 @@ CONTENTS
         1. Importing required libraries as aliases
         2. Importing Part to use its LineSegment methode
 
-    B. THE FUNCTION FOR THE VISUALIZATION
+    B. SPECIFIC FUNCTIONS
+        1. The function for the presentation
+        2. The function to inform user
 
     C. DOCUMENT
         1. Creating a FreeCAD document with given name
@@ -78,23 +80,29 @@ import FreeCADGui as Gui # type: ignore
 import Part # type: ignore
 from PySide import QtGui # type: ignore
 
-### B. THE FUNCTION FOR THE VISUALIZATION
+### B. SPECIFIC FUNCTIONS
+## 1. The function for the presentation
 def setVisuality():
     # Setting up visualization
     GuiView = Gui.ActiveDocument.ActiveView
+    # Setting the scene isometric view
     GuiView.viewIsometric()
+    # Displaying crossing axes
     GuiView.setAxisCross(True)
+    # Fitting the scene in the frame
     GuiView.fitAll()
     pass
 
-# appending a plain text to the report view
+## 2. The function to inform user
 def txtRv(msg):
     '''Text to Report View'''
     reportView = 'Report view'
+    # handling the main window of FreeCAD
     mainWindow = Gui.getMainWindow()
+    # handling the report view widget
     reportView = mainWindow.findChild(QtGui.QTextEdit, reportView)
+    # appending the message
     reportView.append(msg)
-    #reportView.setPlainText(msg)
     pass
 
 
