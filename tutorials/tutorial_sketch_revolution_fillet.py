@@ -68,6 +68,9 @@ CONTENTS
 
 Created on Mon Nov 25 16:18:00 2024
 
+license: CCO 1.0
+https://creativecommons.org/publicdomain/zero/1.0/
+
 @author: gurkan
 gurkansahin28@gmail.com
 """
