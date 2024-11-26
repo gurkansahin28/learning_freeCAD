@@ -124,9 +124,9 @@ input('Press Enter to create a Body object!..')
 ## 1. Creating Body object with given parameters
 # a. parameters
 objName = 'MyBody'
-objFromLib = 'PartDesing::Body'
+objFromLib = 'PartDesign::Body'
 # b. creation of the body
-body = doc.addObject('PartDesign::Body', 'MyBody')
+body = doc.addObject(objFromLib, objName)
 txtRv('The Body object created!..')
 
 input('Press Enter for the Sketch object!..')
@@ -218,4 +218,5 @@ txtRv('The Rovolution has been done!..')
 
 setVisuality()
 txtRv('Visulization improved!..')
+
 
