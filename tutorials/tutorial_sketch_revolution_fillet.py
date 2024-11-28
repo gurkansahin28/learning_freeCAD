@@ -68,6 +68,8 @@ CONTENTS
 
 Created on Mon Nov 25 16:18:00 2024
 
+FreeCAD Version: 1.0.0
+
 license: CCO 1.0
 https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -108,6 +110,16 @@ def txtRv(msg):
     reportView.append(msg)
     pass
 
+## 3.
+def getPlane(body, role="XY_Plane"):
+    planes = [obj for obj in body.Document.Objects if hasattr(obj, "Role") and obj.Role == role and obj.getParentGeoFeatureGroup() == body]
+    if len(planes) == 1:
+        return planes[0]
+    else:
+        errMsg = f"Error: Unable to find origin object with role = {role} for {body.Label}\n"
+        App.Console.PrintError(errMsg)
+        return None
+
 
 input('Press Enter to create a new document!..')
 ### C. DOCUMENT
@@ -137,19 +149,19 @@ objName = 'MyRect'
 objFromLib = 'Sketcher::SketchObject'
 # b. creating the skectch
 sketch = body.newObject(objFromLib, objName)
+# the below code line gets duplicated child item warning
+# body.Group += [sketch]
 # c. setting the MapMode feature
-sketch.MapMode = 'FlatFace'
+
 txtRv('The Skecth object has been created!..')
 
 input('Press Enter to create a Rectangle!..')
 ## 2. Set the plane for the sketch (XY Plane)
 # a. Attach the sketch to the XY plane using its attachment system
-# 1. parameters
-base = App.Vector(0, 0, 0)
-rot = App.Rotation(0, 0, 0)
 # 2. attaching
-sketch.AttachmentOffset = App.Placement(base, rot)
-sketch.MapMode = "FlatFace"
+xyplane = getPlane(body, 'XY_Plane')
+sketch.AttachmentSupport = xyplane
+sketch.MapMode = 'FlatFace'
 doc.recompute()
 
 ## 3. From Vectors to the Sketch
@@ -218,5 +230,4 @@ txtRv('The Rovolution has been done!..')
 
 setVisuality()
 txtRv('Visulization improved!..')
-
 
