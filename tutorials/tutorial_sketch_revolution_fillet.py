@@ -26,6 +26,7 @@ CONTENTS
     B. SPECIFIC FUNCTIONS
         1. The function for the presentation
         2. The function to inform user
+        3. The function to get the plane for the sketch
 
     C. DOCUMENT
         1. Creating a FreeCAD document with given name
@@ -41,13 +42,11 @@ CONTENTS
         1. Creation a Sketch via given parameters
             a. parameters
             b. creating the skectch
-            c. setting the MapMode feature
 
 
         2. Set the plane for the sketch (XY Plane)
             a. Attach the sketch to the XY plane using its attachment system
-                1. parameters
-                2. attaching
+                1. attaching
 
         3. From Vectors to the Sketch
             a. Defining Edge Vectors for lines
@@ -83,7 +82,6 @@ import FreeCAD as App # type: ignore
 import FreeCADGui as Gui # type: ignore
 # 2. Importing Part to use its LineSegment methode
 import Part # type: ignore
-from PySide import QtGui # type: ignore
 
 ### B. SPECIFIC FUNCTIONS
 ## 1. The function for the presentation
@@ -100,19 +98,17 @@ def setVisuality():
 
 ## 2. The function to inform user
 def txtRv(msg):
-    '''Text to Report View'''
-    reportView = 'Report view'
-    # handling the main window of FreeCAD
-    mainWindow = Gui.getMainWindow()
-    # handling the report view widget
-    reportView = mainWindow.findChild(QtGui.QTextEdit, reportView)
-    # appending the message
-    reportView.append(msg)
+    FreeCAD.Console.PrintMessage(f'\n{msg}') # type: ignore
     pass
 
-## 3.
+## 3. The function to get the plane for the sketch
 def getPlane(body, role="XY_Plane"):
-    planes = [obj for obj in body.Document.Objects if hasattr(obj, "Role") and obj.Role == role and obj.getParentGeoFeatureGroup() == body]
+    bodyObjects = body.Document.Objects
+    hasObjAttr = hasattr(obj, 'Role')
+    is_role = (obj.Role == role)
+    objGroupName = obj.getParentGeoFeatureGroup()
+    is_groupName_body = (objGroupName == body)
+    planes = [obj for obj in bodyObjects if hasObjAttr and is_role and is_groupName_body]
     if len(planes) == 1:
         return planes[0]
     else:
@@ -149,16 +145,13 @@ objName = 'MyRect'
 objFromLib = 'Sketcher::SketchObject'
 # b. creating the skectch
 sketch = body.newObject(objFromLib, objName)
-# the below code line gets duplicated child item warning
-# body.Group += [sketch]
-# c. setting the MapMode feature
-
+doc.recompute()
 txtRv('The Skecth object has been created!..')
 
 input('Press Enter to create a Rectangle!..')
 ## 2. Set the plane for the sketch (XY Plane)
 # a. Attach the sketch to the XY plane using its attachment system
-# 2. attaching
+# 1. attaching
 xyplane = getPlane(body, 'XY_Plane')
 sketch.AttachmentSupport = xyplane
 sketch.MapMode = 'FlatFace'
