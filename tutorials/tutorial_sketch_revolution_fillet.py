@@ -103,14 +103,22 @@ def txtRv(msg):
 
 ## 3. The function to get the plane for the sketch
 def getPlane(body, role="XY_Plane"):
+    # handling the body object collection
     bodyObjects = body.Document.Objects
+    # investigating whether the object has 'Role' attribute
     hasObjAttr = hasattr(obj, 'Role')
+    # getting informed what the object role is
     is_role = (obj.Role == role)
+    # creating a container variable to get the parent info
     objGroupName = obj.getParentGeoFeatureGroup()
+    # testifying the name whether it is 'body'
     is_groupName_body = (objGroupName == body)
+    # defining a list to contain conditional planes
     planes = [obj for obj in bodyObjects if hasObjAttr and is_role and is_groupName_body]
+    # if it has a only one member return it
     if len(planes) == 1:
         return planes[0]
+    # else raise an error message on the Report view and quit
     else:
         errMsg = f"Error: Unable to find origin object with role = {role} for {body.Label}\n"
         App.Console.PrintError(errMsg)
